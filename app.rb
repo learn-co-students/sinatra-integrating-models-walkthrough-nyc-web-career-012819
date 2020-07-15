@@ -1,5 +1,5 @@
-require_relative 'config/environment'
 require_relative 'models/text_analyzer.rb'
+require_relative 'config/environment'
 
 class App < Sinatra::Base
   get '/' do
@@ -7,7 +7,12 @@ class App < Sinatra::Base
   end
 
   post '/' do
-    text_from_user = params[:user_text]
+    #shortened version of below
+    # puts params[:test]
+    # binding.pry
+    @user_text = TextAnalyzer.new(params[:user_text])
+ #    text_from_user = params[:user_text]
+ # @analyzed_text = TextAnalyzer.new(text_from_user)
 
     erb :results
   end
